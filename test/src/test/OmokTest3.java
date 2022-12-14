@@ -70,6 +70,8 @@ public class OmokTest3 {
 
 			int count = 0; // 검은돌 흰돌 번갈아 사용하기 위한 변수
 			int pers = 0; // 0이면 게임 진행, 1이면 종료
+			boolean sus = true;
+
 			while (pers == 0) { // while(pers == 0)
 
 				Scanner scan = new Scanner(System.in);
@@ -118,11 +120,23 @@ public class OmokTest3 {
 
 				}
 				System.out.println("카운트" + count);
+				
+					System.out.println("게임을 계속 진행하시겠습니까? (0.계속 진행 1.종료) >"); // boolean으로 활용하는게 더 좋을 것 같음 0
+					pers = scan.nextInt();
+//					// 사용자가 0입력하면 true, 1입력하면 false로 받기 - if문으로 받으니까 0,1외 입력시 돌아갈방법x
+//					switch (pers) {
+//					case 0:
+//						sus = true;
+//						break;
+//					case 1:
+//						sus = false;
+//						break;
+//					default:
+//						System.out.println("0또는 1을 입력하세요.");
+//						continue;
+					
+				}
 
-				System.out.println("게임을 계속 진행하시겠습니까? (0.계속 진행 1.종료) >");  //boolean으로 활용하는게 더 좋을 것 같음 0
-				pers = scan.nextInt();
-				if (pers == 1)
-					System.out.println("게임을 종료합니다. ");
 			}
 
 		}
