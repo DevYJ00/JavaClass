@@ -104,6 +104,7 @@ public class OmokTest3 {
 				// finally는 예외발생 하나 안하나 실행 catch절 수행하고 finally도 수행
 				// 출력문 - count를 출력문에서 올려줘야 정상출력만 ++
 				{
+					count++;
 					if (count % 2 == 0)
 						board[oy - 1][ox - 1] = '○';
 					else
@@ -114,12 +115,11 @@ public class OmokTest3 {
 							System.out.printf("%c", board[y - 1][x - 1]);
 						System.out.println();
 					}
-					count++;
 
 				}
 				System.out.println("카운트" + count);
 
-				System.out.println("게임을 계속 진행하시겠습니까? (0.계속 진행 1.종료) >");
+				System.out.println("게임을 계속 진행하시겠습니까? (0.계속 진행 1.종료) >");  //boolean으로 활용하는게 더 좋을 것 같음 0
 				pers = scan.nextInt();
 				if (pers == 1)
 					System.out.println("게임을 종료합니다. ");
