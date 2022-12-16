@@ -6,6 +6,32 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class N7 {
+	
+	
+	/*
+	 		for (int m = 0; m < board.length; m++) {
+			for (int n = 0; n < board[m].length; n++) {
+				System.out.print(board[m][n]);
+			}
+			System.out.println();
+	  
+	 */
+//print( ) 메서드 하나로 만들고싶은데, 매개변수 타입이 달라서 별개로 생성하게됨 - 수정하려면?
+	 static void printMap(int[][] map) {
+		for(int j=0; j<map.length; j++) {
+			for(int i=0; i<map[j].length;i++)
+				System.out.print(map[j][i]);
+			System.out.println();
+		}
+	}
+	
+	 static void printBoard(char[][] board) {
+		for(int j=0; j<board.length; j++) {
+			for(int i=0; i<board[j].length;i++)
+				System.out.print(board[j][i]);
+			System.out.println();
+		}
+	}
 
 	public static void main(String[] args) throws Exception {
 
@@ -35,6 +61,9 @@ public class N7 {
 
 			System.out.println("map 데이터 로드 완료");
 			
+			// 똑바로 넣었는지 확인
+			printMap(map);
+			
 			sc.close();
 			fis.close();
 			// 문자->숫자 말고 String-> int 바로 갈 방법 생각해보기
@@ -55,38 +84,32 @@ public class N7 {
 		 * map에서 1-> board에서 이상한 모양으로 -> 시작과 끝 1간격으로 증가시켜주면 되려나? 00010 01010 00000
 		 */
 		{
-			char tl = '┌';
 			for (int j = 0; j < map.length; j++) {
 				for (int i = 0; i < map[j].length; i++) {
+					char tl = '┌'; char tr ='┐'; char bl = '└'; char br ='┘'; char box = '▩';  
+					int by = 2 * j; int bx = 2 * i;
 					if (map[j][i] == 1) {
-//						for (int m = 0; m < 2; m++) //여기 밑에서 어차피 4개를 출력해줘서  board 를 돌 필요가 없음!
-//							for (int n = 0; n < 2; n++) 
 						{
-							board[2 * j][2 * i] = '▩';    //2j 변수명 잡아주는것도 깔끔할것같음 mx my이런식으로
-							board[2 * j][2 * i + 1] = '▩';
-							board[2 * j + 1][2 * i] = '▩';
-							board[2 * j + 1][2 * i + 1] = '▩';
+
+							board[by][bx] = box; // 2j 변수명 잡아주는것도 깔끔할것같음 bx by이런식으로
+							board[by][bx + 1] = box;
+							board[by + 1][bx] = box;
+							board[by + 1][bx + 1] = box;
 						}
 
 					} else {
-//						for (int m = 0; m < 2; m++)
-//							for (int n = 0; n < 2; n++) 
 						{
-							board[2 * j][2 * i] = '┌';
-							board[2 * j][2 * i + 1] = '┐';
-							board[2 * j + 1][2 * i] = '└';
-							board[2 * j + 1][2 * i + 1] = '┘';
+							board[by][bx] = tl;
+							board[by][bx + 1] = tr;
+							board[by+ 1][bx] = bl;
+							board[by+ 1][bx + 1] = br;
 						}
 					}
 				}
 			}
 		}
 // 출력
-		for (int m = 0; m < board.length; m++) {
-			for (int n = 0; n < board[m].length; n++) {
-				System.out.print(board[m][n]);
-			}
-			System.out.println();
-		}
+		printBoard(board);
+		
 	}
 }
