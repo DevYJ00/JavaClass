@@ -68,19 +68,31 @@ public class ElevatorService {
 	int dir = 0;
 	int floorIdx = 0;
 
+	int topFloor = 3;
+	int firstFloor = 1;
 	public void move() {
+		
+		// 방향전환~~~~ <- 좀 수정하기(좀 더 깔끔한 방법 ?) 
+		int floor = 1;
+		
+		if(curFloor == topFloor)
+			floor *= -1; // floor = floor*-1
+		else if (curFloor == firstFloor)
+			floor *= 1;
+		
+		curFloor += floor;
 
-		// 방향전환~~~~ <- 좀 수정하기
-		if (dir == 0)
-			floorIdx++;
-		else
-			floorIdx--;
-		curFloor = floor[floorIdx];
-
-		if (curFloor == 3)
-			dir = 1;
-		if (curFloor == 1)
-			dir = 0;
+//		
+//		if (dir == 0)
+//			floorIdx++;
+//		else
+//			floorIdx--;
+//		curFloor = floor[floorIdx];
+//
+//		if (curFloor == 3)
+//			dir = 1;
+//		if (curFloor == 1)
+//			dir = 0;
 
 		int getOffN = 0;
 		// 해당 층수에 승객 하차시키기
