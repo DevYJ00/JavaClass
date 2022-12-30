@@ -23,6 +23,7 @@ public class OmokTest3 {
 		 * 
 		 * board[0][0] = '┌'; board[0][9] = '┐'; board[9][0] = '└'; board[9][9] = '┘';
 		 * 
+		 * 
 		 */
 		// 1. else if 문으로 작성 가장 특이한 케이스들을 위쪽으로 올린다!
 		{
@@ -70,9 +71,9 @@ public class OmokTest3 {
 
 			int count = 0; // 검은돌 흰돌 번갈아 사용하기 위한 변수
 			int pers = 0; // 0이면 게임 진행, 1이면 종료
-			boolean sus = true;
+			boolean power = true;
 
-			while (pers == 0) { // while(pers == 0)
+			while (power) {
 
 				Scanner scan = new Scanner(System.in);
 
@@ -83,7 +84,7 @@ public class OmokTest3 {
 					int tmpX = scan.nextInt();
 					System.out.println("오목을 놓을 위치를 입력하세요(1~10) y >");
 					int tmpY = scan.nextInt();
-					if (tmpX <= 10 && tmpY <= 10) {
+					if ((tmpX > 0 && tmpX <= 10) && (tmpY > 0 && tmpY <= 10)) {
 
 						if (board[tmpY - 1][tmpX - 1] == '●' || board[tmpY - 1][tmpX - 1] == '○') {
 							System.out.println("이미 돌이 있습니다.");
@@ -93,7 +94,7 @@ public class OmokTest3 {
 						ox = tmpX;
 						oy = tmpY;
 					} else {
-						System.out.println("10미만의 숫자만 입력하세요");
+						System.out.println("1~10 숫자만 입력하세요");
 						continue;
 					}
 				} catch (Exception e) {
@@ -120,22 +121,11 @@ public class OmokTest3 {
 
 				}
 				System.out.println("카운트" + count);
-				
-					System.out.println("게임을 계속 진행하시겠습니까? (0.계속 진행 1.종료) >"); // boolean으로 활용하는게 더 좋을 것 같음 0
-					pers = scan.nextInt();
-//					// 사용자가 0입력하면 true, 1입력하면 false로 받기 - if문으로 받으니까 0,1외 입력시 돌아갈방법x
-//					switch (pers) {
-//					case 0:
-//						sus = true;
-//						break;
-//					case 1:
-//						sus = false;
-//						break;
-//					default:
-//						System.out.println("0또는 1을 입력하세요.");
-//						continue;
-					
-				}
+
+				System.out.println("게임을 계속 진행하시겠습니까? (0.계속 진행 그 외.종료) >"); // boolean으로 활용하는게 더 좋을 것 같음 0
+				pers = scan.nextInt();
+				power = (pers == 0) ? true : false; // 삼항연산자
+				System.out.println("종료합니다.");
 
 			}
 

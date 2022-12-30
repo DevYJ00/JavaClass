@@ -8,8 +8,10 @@ public class ElevatorService {
 
 	int capacity = 4;
 	int[] elvPassenger = new int[capacity];
-	int[] floor = { 1, 2, 3 }; // 1층에서 시작
-	int curFloor = floor[0]; // 현재 층수
+//	int[] floor = { 1, 2, 3 }; // 1층에서 시작
+//	int curFloor = floor[0]; // 현재 층수
+	int floor = 1;
+	int curFloor = 1;
 
 	boolean progress = true;
 
@@ -73,7 +75,6 @@ public class ElevatorService {
 	public void move() {
 		
 		// 방향전환~~~~ <- 좀 수정하기(좀 더 깔끔한 방법 ?) 
-		int floor = 1;
 		
 		if(curFloor == topFloor)
 			floor *= -1; // floor = floor*-1

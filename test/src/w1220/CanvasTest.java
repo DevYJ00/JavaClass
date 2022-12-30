@@ -11,7 +11,7 @@ public class CanvasTest {
 		//buf배열을 board판으로 만들어보면
 		ca.drawBoard();
 		//(5,2,2,3)
-		ca.drawLine(40,2,2,30); // 기울기가 1미만일때는 int로 0이 되버리니까 -1로 보정한 예제
+		ca.drawLine(0,2,2,30); // 기울기가 1미만일때는 int로 0이 되버리니까 -1로 보정한 예제
 		
 		
 		ca.print();

@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class N8 {
 	
-
+	static  Scanner scan = new Scanner(System.in); // main메서드가 static이라 static으로 선언해놔야 사용가능
+	
 	public static void main(String[] args) throws Exception {
 
 		// 2. map이라는 이름으로 5x3 크기의 정수를 담을 수 있는 이차원 배열과 board라는 이름의
@@ -23,11 +24,12 @@ public class N8 {
 		
 		
 		//board size설정
-		Scanner scan = new Scanner(System.in);
+//		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("board 사이즈를 몇 배로 할지 입력하세요  o배 >");
 		
-		int m = scan.nextInt(); // 
+		int m = scan.nextInt(); 
+		scan.nextLine(); //한번씩 버려줘야 에러없음 (공백이라던가 이런거 버려주기)
 
 		
 		char[][] board = new char[3*m][5*m];
@@ -55,7 +57,7 @@ public class N8 {
 			System.out.println("map 데이터 로드 완료");
 			
 			// 똑바로 넣었는지 확인
-			printMap(map);
+			print(map);
 			
 			sc.close();
 			fis.close();
@@ -68,7 +70,7 @@ public class N8 {
 		makeShape(map, board, 1,m, '▩' ,'○');
 		
 // 출력
-		printBoard(board);
+		print(board);
 	} //main 끝
 	
 	
@@ -111,7 +113,7 @@ public class N8 {
 
 
 	//print( ) 메서드 하나로 만들고싶은데, 매개변수 타입이 달라서 별개로 생성하게됨 - 수정하려면?
-		public static void printMap(int[][] map) {
+		public static void print(int[][] map) {
 			for(int j=0; j<map.length; j++) {
 				for(int i=0; i<map[j].length;i++)
 					System.out.print(map[j][i]);
@@ -119,7 +121,7 @@ public class N8 {
 			}
 		}
 		
-		public static void printBoard(char[][] board) {
+		public static void print(char[][] board) {
 			for(int j=0; j<board.length; j++) {
 				for(int i=0; i<board[j].length;i++)
 					System.out.print(board[j][i]);

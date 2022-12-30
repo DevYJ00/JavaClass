@@ -8,27 +8,19 @@ import java.util.Scanner;
 
 public class Room {
  
-	private Student stu; // 이거 필요할까? - 필요 없음! 메서드 내부에서 이용할 때는 객체를 생성 후 이용해서 ㄱㅊ
+//	private Student stu; // 이거 필요할까? - 필요 없음! 메서드 내부에서 이용할 때는 객체를 생성 후 이용해서 ㄱㅊ <- 이 이유보다는 Student[] 배열안에 담겨 있어서가 아닐까?
 	private Student[] stus;
 
-//composition
 	public Room(int size) {
-		stus = new Student[size]; // composition
+		stus = new Student[size]; 
 	}
 
+//composition
 	public Room() {
 		this(10); // 기본 10명으로 설정
 	}
 
-//	//aggregation 방법
-//	public Room(int size) {
-//		this.stus = new Student[size];
-//	}
-//	
-//	
-//	public void setStu(Student stu) {
-//		this.stu = stu;
-//	}
+
 
 	// 학생들을 Student[] 에 추가하는 메서드
 	public void load(String path) throws IOException {

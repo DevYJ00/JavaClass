@@ -7,31 +7,6 @@ import java.util.Scanner;
 
 public class N7 {
 	
-	
-	/*
-	 		for (int m = 0; m < board.length; m++) {
-			for (int n = 0; n < board[m].length; n++) {
-				System.out.print(board[m][n]);
-			}
-			System.out.println();
-	  
-	 */
-//print( ) 메서드 하나로 만들고싶은데, 매개변수 타입이 달라서 별개로 생성하게됨 - 수정하려면?
-	 static void printMap(int[][] map) {
-		for(int j=0; j<map.length; j++) {
-			for(int i=0; i<map[j].length;i++)
-				System.out.print(map[j][i]);
-			System.out.println();
-		}
-	}
-	
-	 static void printBoard(char[][] board) {
-		for(int j=0; j<board.length; j++) {
-			for(int i=0; i<board[j].length;i++)
-				System.out.print(board[j][i]);
-			System.out.println();
-		}
-	}
 
 	public static void main(String[] args) throws Exception {
 
@@ -47,17 +22,25 @@ public class N7 {
 			Scanner sc = new Scanner(fis);
 
 			String[] tmpArr = new String[map.length];
+			
+			//String[] 배열에 한 줄씩 담기(임시)
+			
+			
+//			txt파일에서 자주 읽어오니까, String[] 으로 불러오기 메서드		
+//			for (int i = 0; i < tmpArr.length; i++) {
+//				tmpArr[i] = sc.nextLine();
+//			}
+			readTxtByString(sc, tmpArr);
+			
+			
 
-			for (int i = 0; i < tmpArr.length; i++) {
-				tmpArr[i] = sc.nextLine();
-			}
-
-			// 한줄먼저~~~~ map[0][i] = String[0]
-			for (int j = 0; j < map.length; j++) {
-				for (int i = 0; i < map[j].length; i++) {
-					map[j][i] = (tmpArr[j].charAt(i)) - '0';
-				}
-			}
+			// int[][] 배열에 담기 - 데이터 로드 완료
+//			for (int j = 0; j < map.length; j++) {
+//				for (int i = 0; i < map[j].length; i++) {
+//					map[j][i] = (tmpArr[j].charAt(i)) - '0';
+//				}
+//			}
+			transStrToInt2D(tmpArr, map);
 
 			System.out.println("map 데이터 로드 완료");
 			
@@ -83,33 +66,78 @@ public class N7 {
 		 * 
 		 * map에서 1-> board에서 이상한 모양으로 -> 시작과 끝 1간격으로 증가시켜주면 되려나? 00010 01010 00000
 		 */
+		char tl = '┌'; char tr ='┐'; char bl = '└'; char br ='┘'; char box = '▩';  
+		
 		{
 			for (int j = 0; j < map.length; j++) {
 				for (int i = 0; i < map[j].length; i++) {
-					char tl = '┌'; char tr ='┐'; char bl = '└'; char br ='┘'; char box = '▩';  
 					int by = 2 * j; int bx = 2 * i;
 					if (map[j][i] == 1) {
-						{
 
 							board[by][bx] = box; // 2j 변수명 잡아주는것도 깔끔할것같음 bx by이런식으로
-							board[by][bx + 1] = box;
+							board[by][bx + 1] = box; //여기서 1은 num-1 인듯!
 							board[by + 1][bx] = box;
 							board[by + 1][bx + 1] = box;
-						}
 
 					} else {
-						{
+						
 							board[by][bx] = tl;
 							board[by][bx + 1] = tr;
 							board[by+ 1][bx] = bl;
 							board[by+ 1][bx + 1] = br;
-						}
 					}
 				}
 			}
 		}
+		makeShape(map, board, num,size);
 // 출력
 		printBoard(board);
-		
 	}
+	public static void makeShape(int[][] map, String[] board, int num,int multi) {
+		for(int j=0; j<map.length; j++) {
+			for(int i=0;i <map[j].length;j++) {
+				
+			}
+		}
+	}
+	
+	
+
+	 static void transStrToInt2D(String[] tmpArr, int[][] map) {
+		for(int i=0; i<tmpArr.length; i++) {
+			for(int j=0; j<tmpArr[i].length(); j++) {
+				map[i][j] = (tmpArr[i].charAt(j))-'0';
+			}
+		}
+	}
+
+
+
+	//print( ) 메서드 하나로 만들고싶은데, 매개변수 타입이 달라서 별개로 생성하게됨 - 수정하려면?
+		public static void printMap(int[][] map) {
+			for(int j=0; j<map.length; j++) {
+				for(int i=0; i<map[j].length;i++)
+					System.out.print(map[j][i]);
+				System.out.println();
+			}
+		}
+		
+		public static void printBoard(char[][] board) {
+			for(int j=0; j<board.length; j++) {
+				for(int i=0; i<board[j].length;i++)
+					System.out.print(board[j][i]);
+				System.out.println();
+			}
+		}
+
+		
+
+		//txt파일 자료 불러다가 int[][] 자주 담으니까?
+		public static void readTxtByString(Scanner sc, String[] strArr) {
+			for(int i=0; i<strArr.length; i++) {
+				strArr[i] = sc.nextLine();
+			}
+		}
+		
+	
 }

@@ -29,7 +29,7 @@ public class ArrayTest {
 		
 		System.out.println();
 		
-		// 값 출력
+		// 값 출력 - 파일로 하라고했나?
 		for (int i = 0; i < nums.length; i++) {
 			System.out.printf("%d", nums[i]);
 			if (i < nums.length - 1)

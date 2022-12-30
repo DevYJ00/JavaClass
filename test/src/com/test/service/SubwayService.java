@@ -1,5 +1,6 @@
 package com.test.service;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SubwayService {
@@ -16,11 +17,11 @@ public class SubwayService {
 	int vehicleNum = 4; // 차량 댓수
 	int[] vehicle = new int[vehicleNum];
 	// 승객
-	String[] cus = new String[passNum];
+	String[] passengers = new String[passNum];
 
 	// 목적지 현황
 	String[][] status = new String[vehicleNum][passNum];
-
+	
 	Scanner scan = new Scanner(System.in);
 	// 탑승 시 목적지 지정. 목적지도착 시 자동하차
 	// 필요한 함수
@@ -29,36 +30,37 @@ public class SubwayService {
 	 * 
 	 */
 
-	public void run()  {
-		
+	public void run() {
+
 		for (int i = 0; i < 3; i++)
 			System.out.println();
 		System.out.printf("현재역은 %s입니다.\n", curStation);
+		NEWLEC: while (true) {
+			System.out.println("=================================");
+			System.out.println("메뉴를 선택하세요.");
+			System.out.println("1.탑승 2.상세보기 3.이동 4.종료");
 
-		System.out.println("=================================");
-		System.out.println("메뉴를 선택하세요.");
-		System.out.println("1.탑승 2.상세보기 3.이동 4.종료");
+			switch (scan.nextInt()) {
 
-		switch (scan.nextInt()) {
+			case 1:
+				join();
+				break;
+			case 2:
+				status();
+				break;
+			case 3:
+				move();
+				break;
+			case 4:
+				System.out.println("프로그램을 종료합니다.");
+				break NEWLEC;
+			}
 
-		case 1:
-			join();
-			break;
-		case 2:
-			status();
-			break;
-		case 3:
-			move();
-			break;
-		case 4 :
-			System.exit(0);
-
-		}
-
-		// 하차시키기
+			// 하차시키기
 //		getOff();
 
-	} // 상세보기 - 몇호차량에 탑승
+		} // 상세보기 - 몇호차량에 탑승
+	}
 
 	private void getOff() {
 		// 현재역 == 배열에 담기값 -> 하차
@@ -78,7 +80,7 @@ public class SubwayService {
 	public void join() {
 		// 탑승가능 현황 출력 (인원 찾으면 탑승불가, 비었으면 탑승가능)
 		for (int i = 0; i < 4; i++) {
-			if ((vehicle[i] < 4)  ) // vehicle[0] != 4
+			if ((vehicle[i] < 4)) // vehicle[0] != 4
 				System.out.println((i + 1) + "호차 : 탑승가능");
 			else
 				System.out.println((i + 1) + "호차 : 정원 초과, 다른 호차를 이용하세요.");

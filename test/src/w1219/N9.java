@@ -51,8 +51,13 @@ public class N9 {
 
 		}
 		printBoard(sh);
-		
-		
+//		int k = 0;
+//		// y>(x-2)^2 이것도 출력이 가능할까? Math.abs 이용하고싶긴한데....
+//		for (int i = 0; i < sh.length; i++) {
+//			for (int j = 0; j < sh[i].length; j++)
+//				k = (int) Math.pow(i, 2);
+//			System.out.println(k);
+//		}
 	
 
 	} // main 끝
